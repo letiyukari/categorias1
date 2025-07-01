@@ -7,6 +7,9 @@ WORKDIR /app
 # Copie o código fonte para o container
 COPY . /app
 
+# Adicione permissões de execução para o mvnw
+RUN chmod +x ./mvnw
+
 # Exponha a porta que o microsserviço vai rodar
 EXPOSE 8080
 
