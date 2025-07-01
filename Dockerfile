@@ -18,3 +18,5 @@ RUN ./mvnw clean install -DskipTests
 
 # Execute o aplicativo
 ENTRYPOINT ["java", "-jar", "target/categorias-0.0.1-SNAPSHOT.jar"]
+
+
