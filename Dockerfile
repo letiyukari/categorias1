@@ -4,11 +4,14 @@ FROM openjdk:17-jdk-slim
 # Defina o diretório de trabalho
 WORKDIR /app
 
-# Copie o arquivo JAR gerado para o container
-COPY target/categorias-0.0.1-SNAPSHOT.jar categorias.jar
+# Copie o código fonte para o container
+COPY . /app
 
 # Exponha a porta que o microsserviço vai rodar
 EXPOSE 8080
 
+# Comando para construir o JAR dentro do container
+RUN ./mvnw clean install -DskipTests
+
 # Execute o aplicativo
-ENTRYPOINT ["java", "-jar", "categorias.jar"]
+ENTRYPOINT ["java", "-jar", "target/categorias-0.0.1-SNAPSHOT.jar"]
